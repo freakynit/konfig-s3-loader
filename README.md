@@ -23,12 +23,13 @@ import {konfig, contracts} from 'konfig';
 import {S3Provider} from 'konfig-s3-loader';
 
 const s3Client: S3 = new AWS.S3({...});
-const config = await konfig('s3://<bucket>/<config-file-path>', {loader: S3Provider({
+const s3Provider = (): contracts.Loader => S3Provider({
     s3: s3Client
-})});
+});
+const config = await konfig('s3://<bucket>/<config-file-path>', {loader: s3Provider});
 ```
 
-Use directly without creating temporary variable:
+Use directly without creating temporary local `provider` variable:
 ```typescript
 import {konfig, contracts} from 'konfig';
 import {S3Provider} from 'konfig-s3-loader';
