@@ -37,3 +37,7 @@ import {S3Provider} from 'konfig-s3-loader';
 const s3Client: S3 = new AWS.S3({...});
 const config = await konfig('s3://<bucket>/<config-file-path>', {loader: S3Provider({s3: s3Client})});
 ```
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
